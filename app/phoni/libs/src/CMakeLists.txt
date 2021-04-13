@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 ######################## EXECUTABLE PART
 
-#add_executable(compress_dictionary compress_dictionary.cpp)
-#target_link_libraries(compress_dictionary common sdsl malloc_count)
-
 #add_executable(rlbwt rlbwt.cpp)
 #target_link_libraries(rlbwt common sdsl malloc_count)
 #
@@ -54,17 +51,24 @@ target_include_directories(phoni PUBLIC    "../include/ms"
                                         "${SUX_SOURCE_DIR}/support"
                                         )
 target_compile_options(phoni PUBLIC "-std=c++17")
-#
-#add_executable(build_phoni build_phoni.cpp)
-#target_link_libraries(build_phoni common sdsl divsufsort divsufsort64 malloc_count ri)
-#target_include_directories(build_phoni PUBLIC    "../include/ms"
-#                                        "../include/common"
-#                                        "${shaped_slp_SOURCE_DIR}"
-#                                        "${FOLCA_SOURCE_DIR}"
-#                                        "${SUX_SOURCE_DIR}/function"
-#                                        "${SUX_SOURCE_DIR}/support"
-#                                        )
-#target_compile_options(build_phoni PUBLIC "-std=c++17")
+set(EXECUTABLE_OUTPUT_PATH  "../../../../../../src/main/java/bin")
+
+add_executable(build_phoni build_phoni.cpp)
+target_link_libraries(build_phoni common sdsl divsufsort divsufsort64 malloc_count ri)
+
+target_include_directories(build_phoni PUBLIC
+        "../include/ms"
+        "../include/common"
+        "${GCEM_SOURCE_DIR}"
+        "${shaped_slp_SOURCE_DIR}"
+        "${FOLCA_SOURCE_DIR}"
+        "${SUX_SOURCE_DIR}/function"
+        "${SUX_SOURCE_DIR}/support"
+        )
+target_compile_options(build_phoni PUBLIC "-std=c++17")
+set(EXECUTABLE_OUTPUT_PATH  "../../../../../../src/main/java/bin")
+
+
 #
 #
 #add_executable(bwt2rlbwt bwt2rlbwt.cpp)
